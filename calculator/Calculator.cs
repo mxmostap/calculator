@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace calculator;
 
@@ -11,31 +10,14 @@ public class Calculator
         {
             Console.Write(message);
             double number;
-            if (double.TryParse(GetConsoleInput(@"\d+\,?\d+"), out number))
+            string? input = Console.ReadLine().Trim();
+            if (!input.Contains(" ") & double.TryParse(input, out number))
                 return number;
             else 
                 Console.WriteLine("Ошибка ввода - Вы ввели не число. Повторите ввод.");
         }
     }
 
-    static string GetConsoleInput(string rule)
-    {
-        ConsoleKeyInfo key;
-        var input = "";
-        while(true)
-        {
-            key = Console.ReadKey(true);
-            if(key.Key == ConsoleKey.Enter)
-                break;
-            if(Regex.IsMatch(key.KeyChar.ToString(), rule))
-            {
-                input += key.KeyChar;
-                Console.Write(key.KeyChar);
-            }
-        }
-
-        return input;
-    }
     public static string GetSystemSeparator()
     {
         CultureInfo currentCulture = CultureInfo.CurrentCulture;
@@ -44,18 +26,16 @@ public class Calculator
 
     public static string GetOperation()
     {
-        //string[] validOperations = {"+", "-", "*", "/"};
+        string[] validOperations = {"+", "-", "*", "/"};
         while (true)
         {
             Console.WriteLine("Доступные арифметические операции: '+','-','*','/'.");
             Console.Write("Введите арифметическую операцию: ");
-            //string? input = Console.ReadLine().Replace(" ", "");
-            string input = GetConsoleInput(@"[+-*/]");
-            //if (validOperations.Contains(input)) 
-              //  return input;    
-            //else
-              //  Console.WriteLine("Ошибка ввода. Введите операцию из списка доступных.");
-              return input;
+            string? input = Console.ReadLine();
+            if (validOperations.Contains(input)) 
+                return input;    
+            else
+                Console.WriteLine("Ошибка ввода. Введите операцию из списка доступных.");
         }
     }
     

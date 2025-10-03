@@ -1,7 +1,4 @@
-﻿using System.Globalization;
-using System.Text;
-using System.Text.RegularExpressions;
-using calculator;
+﻿using calculator;
 
 class Program
 {
