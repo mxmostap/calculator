@@ -1,5 +1,3 @@
-﻿using System.Globalization;
-
 namespace calculator;
 
 public class Calculator
@@ -10,21 +8,15 @@ public class Calculator
         {
             Console.Write(message);
             double number;
-            string? input = Console.ReadLine().Trim();
-            if (!input.Contains(" ") & double.TryParse(input, out number))
+            string? input = Console.ReadLine()?.Trim();
+            if (input != null && !input.Contains(" ") & double.TryParse(input, out number))
                 return number;
             else 
                 Console.WriteLine("Ошибка ввода - Вы ввели не число. Повторите ввод.");
         }
     }
 
-    public static string GetSystemSeparator()
-    {
-        CultureInfo currentCulture = CultureInfo.CurrentCulture;
-        return currentCulture.NumberFormat.NumberDecimalSeparator;
-    }
-
-    public static string GetOperation()
+    public static string? GetOperation()
     {
         string[] validOperations = {"+", "-", "*", "/"};
         while (true)
