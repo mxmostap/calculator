@@ -12,21 +12,9 @@ class Program
             Console.WriteLine();
             try
             {
-                double number1 = Calculator.GetNumber("Введите первое число:");
-                string? operation = Calculator.GetOperation();
-                double number2 = Calculator.GetNumber("Введите второе число:");
-                if (operation == "/" & number2 == 0) 
-                {
-                    Console.WriteLine("ОШИБКА: Делить на ноль нельзя!");
-                    Console.Write("Чтобы выйти из программы введите 'exit',\n" +
-                                  "чтобы продолжить введите любые символы: ");
-                    if (Console.ReadLine() == "exit") break;
-                    else
-                    {
-                        Console.Clear();
-                        continue;
-                    }
-                }
+                double number1 = InputHandler.GetNumber("Введите первое число:");
+                string? operation = InputHandler.GetOperation();
+                double number2 = InputHandler.GetNumber("Введите второе число:");
 
                 if (operation != null) Calculator.GetResult(number1, number2, operation);
 
@@ -34,10 +22,7 @@ class Program
                               "чтобы продолжить введите любые символы: ");
                 if (Console.ReadLine()?.ToLower() == "exit") break;
                 else
-                {
                     Console.Clear();
-                    continue;
-                }
             }
             catch (Exception e)
             {

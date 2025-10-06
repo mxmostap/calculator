@@ -1,5 +1,5 @@
 .idea
-*.user
+/calculator.sln.DotSettings.user
 bin/
 obj/
 /packages/
