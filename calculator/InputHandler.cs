@@ -1,3 +1,6 @@
+using System.Globalization;
+using static System.Globalization.NumberStyles;
+
 namespace calculator;
 
 public class InputHandler
@@ -9,7 +12,8 @@ public class InputHandler
             Console.Write(message);
             double number;
             string? input = Console.ReadLine()?.Trim();
-            if (!input.Contains(" ") & double.TryParse(input, out number))
+            if (double.TryParse(input, NumberStyles.Float | NumberStyles.AllowThousands, 
+                    new CultureInfo("en-US"), out number))
                 return number;
             else 
                 Console.WriteLine("Ошибка ввода - Вы ввели не число. Повторите ввод.");
