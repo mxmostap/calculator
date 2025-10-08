@@ -2,31 +2,23 @@ namespace calculator;
 
 public class Calculator
 {
-    public static void GetResult(double num1, double num2, string operation)
+    public static string GetResult(double num1, double num2, string operation)
     {
         switch (operation)
         {
             case "+": 
-                Console.WriteLine($"Результат операции: {num1 + num2}"); 
-                break;
+                return (num1 + num2).ToString(); 
             case "-": 
-                Console.WriteLine($"Результат операции: {num1 - num2}"); 
-                break;
+                return (num1 - num2).ToString(); 
             case "*": 
-                Console.WriteLine($"Результат операции: {num1 * num2}"); 
-                break;
+                return (num1 * num2).ToString(); 
             case "/":
-            {
                 if (num2 == 0)
-                    Console.WriteLine("ОШИБКА: Делить на ноль нельзя!");
+                    return "ОШИБКА: Делить на ноль нельзя!";
                 else
-                    Console.WriteLine($"Результат операции: {num1 / num2}"); 
-                break;
-            }
+                    return (num1 / num2).ToString(); 
             default: 
-                Console.WriteLine($"Результат операции не вычислен, введена " +
-                                  $"недопустимая арифметическая операция.");
-                break;
+                return $"Не вычислен, введена недопустимая арифметическая операция.";
         }
     }
 }

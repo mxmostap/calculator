@@ -16,7 +16,9 @@ class Program
                 string? operation = InputHandler.GetOperation();
                 double number2 = InputHandler.GetNumber("Введите второе число:");
 
-                if (operation != null) Calculator.GetResult(number1, number2, operation);
+                if (operation != null)
+                    Console.WriteLine($"Результат операции: " +
+                                      $"{Calculator.GetResult(number1, number2, operation)}");
 
                 Console.Write("Чтобы выйти из программы введите 'exit',\n" +
                               "чтобы продолжить введите любые символы: ");
