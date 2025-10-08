@@ -19,17 +19,20 @@ class Program
                 if (operation != null)
                     Console.WriteLine($"Результат операции: " +
                                       $"{Calculator.GetResult(number1, number2, operation)}");
-
-                Console.Write("Чтобы выйти из программы введите 'exit',\n" +
-                              "чтобы продолжить введите любые символы: ");
-                if (Console.ReadLine()?.ToLower() == "exit") break;
-                else
-                    Console.Clear();
+            }
+            catch (DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Вызвано исключение: {e.Message}");
+                Console.WriteLine(e.Message);
             }
+            Console.Write("Чтобы выйти из программы введите 'exit',\n" +
+                          "чтобы продолжить введите любые символы: ");
+            if (Console.ReadLine()?.ToLower() == "exit") break;
+            else
+                Console.Clear();
         }
     }
     public static string GetSystemSeparator()
